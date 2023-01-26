@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import { Users } from '../models/User';
-import { DescriptionRoles } from '../models/DescriptionRole';
-import { Role } from '../models/Role';
+import { Users } from '../models/User.js';
+import { DescriptionRoles } from '../models/DescriptionRole.js';
+import { Role } from '../models/Role.js';
 
 //crear una nueva descriptionRole
 export const createDescriptionRole = async (req, res) => {
