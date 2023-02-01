@@ -1,6 +1,5 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/database.js';
-
 export const Users = sequelize.define('users', {
     id: {
         type: DataTypes.INTEGER,
@@ -34,6 +33,11 @@ export const Users = sequelize.define('users', {
     state:{
         type: DataTypes.BOOLEAN,
         defaultValue: true
+    },
+    role:{
+        type: DataTypes.ENUM,
+        values: ['teacher','student','admin','tutorship','reader','N/A'],
+        defaultValue: 'N/A'
     },
     token: {
         type: DataTypes.TEXT

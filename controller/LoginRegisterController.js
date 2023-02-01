@@ -38,7 +38,7 @@ export const login = async (req, res) => {
 
 // registro de usuario
 export const register = async (req, res) => {
-    const {names, lastnames, email,identity, phone, photo} = req.body;
+    const {names, lastnames, email,identity, phone, photo,role} = req.body;
     const password = bycrypt.hashSync(req.body.password, 10);
     Users.create({
         names,
@@ -48,9 +48,10 @@ export const register = async (req, res) => {
         identity,
         phone,
         photo,
-        state: true
+        state: true,
+        role
     }).then(user => {
-        const token=jwt.sign({id:user.id,email:user}, 'secretkey',{
+        const token=jwt.sign({id:user.id,email:user.email,role:user.role}, 'secretkey',{
             expiresIn:60*60*24
             });
         Users.update({token,token_type: 'Bearer'},{
